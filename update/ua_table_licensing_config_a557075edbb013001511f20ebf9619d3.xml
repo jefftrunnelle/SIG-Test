@@ -14,14 +14,14 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2018-02-04 15:58:27</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
-        <sys_id>508121f9db1053001511f20ebf96191c</sys_id>
+        <sys_id>a557075edbb013001511f20ebf9619d3</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>x_ucdhs_stuff_widget_docs</sys_name>
         <sys_package display_value="STUFF" source="x_ucdhs_stuff">a24766420f8413009d19b97ce1050ec4</sys_package>
         <sys_policy/>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="STUFF">a24766420f8413009d19b97ce1050ec4</sys_scope>
-        <sys_update_name>ua_table_licensing_config_508121f9db1053001511f20ebf96191c</sys_update_name>
+        <sys_update_name>ua_table_licensing_config_a557075edbb013001511f20ebf9619d3</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
         <sys_updated_on>2018-02-04 15:58:27</sys_updated_on>
     </ua_table_licensing_config>
