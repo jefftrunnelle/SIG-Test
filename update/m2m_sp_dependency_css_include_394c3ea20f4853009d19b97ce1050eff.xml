@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="m2m_sp_dependency_css_include">
+    <m2m_sp_dependency_css_include action="INSERT_OR_UPDATE">
+        <order>200</order>
+        <sp_css_include display_value="highlightjs.min.css">fc1f22aa0f0853009d19b97ce1050ea2</sp_css_include>
+        <sp_dependency display_value="ng-markdown-editor">3d2fe2aa0f0853009d19b97ce1050e25</sp_dependency>
+        <sys_class_name>m2m_sp_dependency_css_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-02-06 06:33:00</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>394c3ea20f4853009d19b97ce1050eff</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>highlightjs.min.css.ng-markdown-editor</sys_name>
+        <sys_package display_value="STUFF" source="x_ucdhs_stuff">a24766420f8413009d19b97ce1050ec4</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="STUFF">a24766420f8413009d19b97ce1050ec4</sys_scope>
+        <sys_update_name>m2m_sp_dependency_css_include_394c3ea20f4853009d19b97ce1050eff</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-02-06 06:33:00</sys_updated_on>
+    </m2m_sp_dependency_css_include>
+</record_update>

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sp_css">
+    <sp_css action="INSERT_OR_UPDATE">
+        <css>.outline {&#13;
+  border: 1px solid #ddd;&#13;
+  border-radius: 3px;&#13;
+}&#13;
+textarea.processed.md-input {&#13;
+  padding: 10px;&#13;
+}&#13;
+textarea {&#13;
+	-webkit-box-sizing: border-box;&#13;
+	-moz-box-sizing: border-box;&#13;
+	box-sizing: border-box;&#13;
+&#13;
+	width: 100%;&#13;
+}&#13;
+&#13;
+/* http://johnsardine.com/freebies/dl-html-css/simple-little-tab/ */&#13;
+.marked &gt; table a:link,&#13;
+.markdown &gt; table a:link {&#13;
+	color: #666;&#13;
+	font-weight: bold;&#13;
+	text-decoration:none;&#13;
+}&#13;
+.marked &gt; table a:visited,&#13;
+.markdown &gt; table a:visited {&#13;
+	color: #999999;&#13;
+	font-weight:bold;&#13;
+	text-decoration:none;&#13;
+}&#13;
+.marked &gt; table a:active,&#13;
+.marked &gt; table a:hover,&#13;
+.markdown &gt; table a:active,&#13;
+.markdown &gt; table a:hover {&#13;
+	color: #bd5a35;&#13;
+	text-decoration:underline;&#13;
+}&#13;
+.marked &gt; table,&#13;
+.markdown &gt; table {&#13;
+	font-family:Arial, Helvetica, sans-serif;&#13;
+	color:#606060;&#13;
+	font-size:15px;&#13;
+	background:#eaeaea;&#13;
+	margin:10px;&#13;
+	border:#ccc 1px solid;&#13;
+&#13;
+	-moz-border-radius:3px;&#13;
+	-webkit-border-radius:3px;&#13;
+	border-radius:3px;&#13;
+}&#13;
+.marked &gt; table th,&#13;
+.markdown &gt; table th {&#13;
+	padding:8px 15px;&#13;
+	border-bottom:1px solid #e0e0e0;&#13;
+	background: #f6f6f6;&#13;
+  color:#333;&#13;
+}&#13;
+.marked &gt; table th:first-child,&#13;
+.markdown &gt; table th:first-child {&#13;
+	text-align: left;&#13;
+	padding-left:10px;&#13;
+}&#13;
+.marked &gt; table tr:first-child th:first-child,&#13;
+.markdown &gt; table tr:first-child th:first-child {&#13;
+	-moz-border-radius-topleft:3px;&#13;
+	-webkit-border-top-left-radius:3px;&#13;
+	border-top-left-radius:3px;&#13;
+}&#13;
+.marked &gt; table tr:first-child th:last-child,&#13;
+.markdown &gt; table tr:first-child th:last-child {&#13;
+	-moz-border-radius-topright:3px;&#13;
+	-webkit-border-top-right-radius:3px;&#13;
+	border-top-right-radius:3px;&#13;
+}&#13;
+.marked &gt; table tr,&#13;
+.markdown &gt; table tr {&#13;
+	text-align: center;&#13;
+	padding-left:10px;&#13;
+}&#13;
+.marked &gt; table td:first-child,&#13;
+.markdown &gt; table td:first-child {&#13;
+	text-align: left;&#13;
+	padding-left:10px;&#13;
+	border-left: 0;&#13;
+}&#13;
+.marked &gt; table td,&#13;
+.markdown &gt; table td {&#13;
+	padding:8px;&#13;
+	border-top: 1px solid #ffffff;&#13;
+	border-bottom:1px solid #e0e0e0;&#13;
+	border-left: 1px solid #e0e0e0;&#13;
+&#13;
+	background: #fff;&#13;
+}&#13;
+&#13;
+.marked &gt; table tr:nth-child(2n) td,&#13;
+.markdown &gt; table tr:nth-child(2n) td {&#13;
+	background: #f8f8f8;&#13;
+}&#13;
+.marked &gt; table tr:last-child td,&#13;
+.markdown &gt; table tr:last-child td {&#13;
+	border-bottom:0;&#13;
+}&#13;
+.marked &gt; table tr:last-child td:first-child,&#13;
+.markdown &gt; table tr:last-child td:first-child {&#13;
+	-moz-border-radius-bottomleft:3px;&#13;
+	-webkit-border-bottom-left-radius:3px;&#13;
+	border-bottom-left-radius:3px;&#13;
+}&#13;
+.marked &gt; table tr:last-child td:last-child,&#13;
+.markdown &gt; table tr:last-child td:last-child {&#13;
+	-moz-border-radius-bottomright:3px;&#13;
+	-webkit-border-bottom-right-radius:3px;&#13;
+	border-bottom-right-radius:3px;&#13;
+}&#13;
+.marked &gt; table tr:hover td,&#13;
+.markdown &gt; table tr:hover td {&#13;
+	background: #f4f4f4;&#13;
+	background: -webkit-gradient(linear, left top, left bottom, from(#f4f4f4), to(#f2f2f2));&#13;
+	background: -moz-linear-gradient(top,  #f4f4f4,  #f2f2f2);&#13;
+}&#13;
+</css>
+        <name>ng-markdown-editor.css</name>
+        <sys_class_name>sp_css</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-02-06 05:41:51</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>4440f2aa0f0853009d19b97ce1050e2d</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>ng-markdown-editor.css</sys_name>
+        <sys_package display_value="STUFF" source="x_ucdhs_stuff">a24766420f8413009d19b97ce1050ec4</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="STUFF">a24766420f8413009d19b97ce1050ec4</sys_scope>
+        <sys_update_name>sp_css_4440f2aa0f0853009d19b97ce1050e2d</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-02-06 06:31:20</sys_updated_on>
+    </sp_css>
+</record_update>

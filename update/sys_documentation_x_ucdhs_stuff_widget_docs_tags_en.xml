@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update>
+    <sys_documentation element="tags" label="Tags" language="en" table="x_ucdhs_stuff_widget_docs">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>tags</element>
+            <help/>
+            <hint/>
+            <label>Tags</label>
+            <language>en</language>
+            <name>x_ucdhs_stuff_widget_docs</name>
+            <plural>Tags</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-02-04 16:05:50</sys_created_on>
+            <sys_customer_update>false</sys_customer_update>
+            <sys_id>525c62460f0813009d19b97ce1050e3e</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>Tags</sys_name>
+            <sys_package display_value="STUFF" source="x_ucdhs_stuff">a24766420f8413009d19b97ce1050ec4</sys_package>
+            <sys_policy/>
+            <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+            <sys_scope display_value="STUFF">a24766420f8413009d19b97ce1050ec4</sys_scope>
+            <sys_update_name>sys_documentation_x_ucdhs_stuff_widget_docs_tags_en</sys_update_name>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-02-04 16:05:50</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

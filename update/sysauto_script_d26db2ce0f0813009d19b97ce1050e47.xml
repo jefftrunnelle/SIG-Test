@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sysauto_script">
+    <sysauto_script action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <condition/>
+        <conditional>false</conditional>
+        <name>update STUFF documentation tables with new type definitions </name>
+        <run_as display_value="System Administrator">6816f79cc0a8016401c5a33be04be441</run_as>
+        <run_as_tz/>
+        <run_dayofmonth>1</run_dayofmonth>
+        <run_dayofweek>1</run_dayofweek>
+        <run_period/>
+        <run_start>2018-02-04 17:20:23</run_start>
+        <run_time>1970-01-01 14:00:00</run_time>
+        <run_type>daily</run_type>
+        <script><![CDATA[(function () {
+	var synchronize = function(defs, docs) {
+		gs.info("synchronizing types in " + defs + " with those in " + docs);
+		var defgr = new GlideRecord(defs);
+		defgr.query();  
+		  
+		while(defgr.next()){      
+		  var docgr = new GlideRecord(docs);  
+		  docgr.addQuery('type', defgr.sys_id);  
+		  docgr.query();  
+		  
+		  if (!docgr.hasNext()){
+	  	    gs.info("adding " + defgr.name + " (" + defgr.sys_id + ") to " + docs);  
+		  	docgr.newRecord();
+		  	docgr.type = defgr.sys_id;
+		  	docgr.insert();  
+		  }  
+		}  
+	};
+	synchronize('sp_widget', 'x_ucdhs_stuff_widget_docs');
+}());]]></script>
+        <sys_class_name>sysauto_script</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-02-04 17:23:57</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>d26db2ce0f0813009d19b97ce1050e47</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>update STUFF documentation tables with new type definitions </sys_name>
+        <sys_package display_value="STUFF" source="x_ucdhs_stuff">a24766420f8413009d19b97ce1050ec4</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="STUFF">a24766420f8413009d19b97ce1050ec4</sys_scope>
+        <sys_update_name>sysauto_script_d26db2ce0f0813009d19b97ce1050e47</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-02-14 21:41:10</sys_updated_on>
+        <upgrade_safe>false</upgrade_safe>
+    </sysauto_script>
+</record_update>

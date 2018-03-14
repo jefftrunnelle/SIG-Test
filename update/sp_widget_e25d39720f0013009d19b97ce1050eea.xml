@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[function($scope) {
+
+  var c = this;
+	c.modes = Object.freeze({QUERY: 0, QUERY_RESULTS: 1, VIEW_DOC: 2, EDIT_DOC: 3});
+	c.mode = c.modes.QUERY;
+	c.orig = undefined;
+
+	c.query = function () {
+		c.data.action = "find-by-qo"; 
+		c.server.update($scope).then(function(response) {
+			c.data.action = undefined;
+			c.mode = c.modes.QUERY_RESULTS;
+		});
+	};
+
+	c.viewDoc = function (doc) {
+		c.mode = c.modes.VIEW_DOC;
+		c.data.doc = doc;
+	};
+	
+	c.editDoc = function () {
+		c.mode = c.modes.EDIT_DOC;
+		c.orig = angular.copy(c.data.doc);
+	};
+	
+	c.save = function () {
+		c.data.action = "update";
+		c.server.update($scope).then(function(response) {
+			c.data.action = undefined;
+			c.mode = c.modes.VIEW_DOC;
+			c.orig = undefined;
+		});
+	}
+	
+	c.cancel = function () {
+		c.mode = c.modes.VIEW_DOC;
+		angular.copy(c.orig, c.data.doc);
+		c.orig = undefined;
+	}
+	
+	/** SMART TABLE **/
+	//angular.module("STUFF", ["smart-table"]);
+	
+	$scope.getters = {
+		type: function (doc) {
+			return doc.type.name;
+		}
+	}
+	
+	/** MARKDOWN EDITOR **/
+	
+	// normal flow, function call
+	$scope.convertMarkdown = function() {
+		vm.convertedMarkdown = marked(vm.markdown);
+	}
+
+	/**
+   * For some convenience, Angular-Markdown-Editor Directive also save each Markdown Editor inside $rootScope
+   * Each of editor object are available through their $rootScope.markdownEditorObjects[editorName]
+   *
+   * Example: <textarea name="editor1" markdown-editor="{'iconlibrary': 'fa'}"></textarea>
+   * We would then call our object through $rootScope.markdownEditorObjects.editor1
+   */
+	$scope.fullScreenPreview = function() {
+		$rootScope.markdownEditorObjects.editor1.showPreview();
+		$rootScope.markdownEditorObjects.editor1.setFullscreen(true);
+	}
+
+	/** Markdown event hook onFullscreen, in this example we will automatically show the result preview when going in full screen
+   * the argument (e) is the actual Markdown object returned which help call any of API functions defined in Markdown Editor
+   * For a list of API functions take a look on official demo site http://www.codingdrama.com/bootstrap-markdown/
+   * @param object e: Markdown Editor object
+   */
+	$scope.onFullScreenCallback = function(e) {
+		e.showPreview();
+	}
+
+	/** After exiting from full screen, let's go back to editor mode (which mean hide the preview)
+   * NOTE: If you want this one to work, you will have to manually download the JS file, not sure why but they haven't released any versions in a while
+   *       https://github.com/toopay/bootstrap-markdown/tree/master/js
+   */
+	$scope.onFullScreenExitCallback = function(e) {
+		e.hidePreview();
+	}
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.table &gt; tbody &gt; tr &gt; td {
+  vertical-align: middle;
+}
+
+.doc.container {
+  padding-left: 0;
+  padding-right: 0;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>true</has_preview>
+        <id>stuff-widget</id>
+        <internal>false</internal>
+        <link/>
+        <name>STUFF widget</name>
+        <option_schema/>
+        <public>true</public>
+        <roles/>
+        <script><![CDATA[(function() {
+	// import custom GlideRecord query library 
+	gs.include("gr-query.js");
+
+	// encapsulate ServiceNow database access
+	var DocRepository = (function () {
+		
+		var EncodedQueries = {
+			findByQO: function (qo) {
+				var params = [];
+				if (qo.code) {
+					params.push("type.client_scriptLIKE" + qo.code + "^ORtype.scriptLIKE" + qo.code + "^ORtype.templateLIKE" + qo.code);
+				}
+				if (qo.wiki) {
+					params.push("wiki=" + qo.wiki);
+				}
+				if (qo.tags) {
+					params.push("tags=" + qo.tags);
+				}
+				return params.join("^");
+			}
+		};										 
+		
+		var Mapper = {
+			toModel: function (gr) {
+				return {
+					table: gr.getTableName(),
+					id: gr.getDisplayValue("sys_id"),
+					type: {
+						table: gr.type.getReferenceTable(),
+						id: gr.getDisplayValue("type.sys_id"),
+						name: gr.getDisplayValue("type.name"),
+						scope: gr.getDisplayValue("type.sys_scope"),
+						createdBy: gr.getDisplayValue("type.sys_created_by"),
+						createdOn: gr.getDisplayValue("type.sys_created_on"),
+						updatedBy: gr.getDisplayValue("type.sys_updated_by"),
+						updatedOn: gr.getDisplayValue("type.sys_updated_on")
+					},
+					wiki: gr.getDisplayValue("wiki"),
+					tags: (gr.getDisplayValue("tags")) ?
+					gr.getDisplayValue("tags").split(",").map(function(tag) { return {text: tag}; }) :
+					[],
+					createdBy: gr.getDisplayValue("sys_created_by"),
+					createdOn: gr.getDisplayValue("sys_created_on"),
+					updatedBy: gr.getDisplayValue("sys_updated_by"),
+					updatedOn: gr.getDisplayValue("sys_updated_on")
+				}
+			},
+			toEntity: function (gr, model) {
+				gr.wiki = model.wiki;
+				gr.tags = model.tags.map(function(tag) { return tag.text; }).join(",");
+				return gr;
+			}
+		};
+		
+		return {
+			findByQO: function (qo) {
+				gs.info("https://dev13791.service-now.com/x_ucdhs_stuff_widget_docs_list.do?sysparm_query=" + EncodedQueries.findByQO(qo));
+				return Query.findByQuery(
+					qo.table,
+					EncodedQueries.findByQO(qo),
+					{mapper: Mapper.toModel}			
+				);		
+			},
+			update: function (doc) {
+				var gr = Query.findOne(doc.table, doc.id);
+				Mapper.toEntity(gr, doc).update();
+				return Mapper.toModel(gr);
+			}
+		};
+	}());
+	
+	if (input) {
+		if (input.action == "find-by-qo") {
+			data.docs = DocRepository.findByQO(input.qo);
+		} else if (input.action == "update") {
+			data.doc = DocRepository.update(input.doc);
+		}
+	} else {
+		data.options = {};
+		data.options.tables = [
+			{label: "Widgets", name: "x_ucdhs_stuff_widget_docs"}
+		]; 
+		data.qo = {
+			table: "x_ucdhs_stuff_widget_docs",
+			code: undefined,
+			wiki: undefined,
+			tags: undefined
+		};
+	}	
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-02-06 20:35:58</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>e25d39720f0013009d19b97ce1050eea</sys_id>
+        <sys_mod_count>294</sys_mod_count>
+        <sys_name>STUFF widget</sys_name>
+        <sys_package display_value="STUFF" source="x_ucdhs_stuff">a24766420f8413009d19b97ce1050ec4</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="STUFF">a24766420f8413009d19b97ce1050ec4</sys_scope>
+        <sys_update_name>sp_widget_e25d39720f0013009d19b97ce1050eea</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-02-14 19:08:29</sys_updated_on>
+        <template><![CDATA[<div>
+  <h1>STUFF</h1>
+  <!-- QUERY FORM -->
+  <form class="form-horizontal">
+    <div class="form-group">
+    	<label for="qo-table" class="col-sm-2 control-label">Table:</label>
+      <div class="col-sm-8">
+      	<select class="form-control" id="qo-table" required ng-model="c.data.qo.table" ng-init="c.data.qo.table = c.data.options.tables[0].name" ng-options="table.name as table.label for table in c.data.options.tables" />  
+      </div>
+    </div>
+    <div class="form-group">
+    	<label for="qo-code" class="col-sm-2 control-label">Code:</label>
+      <div class="col-sm-8">
+      	<input type="text" class="form-control" id="qo-code" ng-model="c.data.qo.code" />  
+      </div>
+    </div> 
+    <div class="form-group">
+    	<label for="qo-wiki" class="col-sm-2 control-label">Wiki:</label>
+      <div class="col-sm-8">
+      	<input type="text" class="form-control" id="qo-wiki" ng-model="c.data.qo.wiki" />  
+      </div>
+    </div>    
+    <div class="form-group">
+    	<label for="qo-tags" class="col-sm-2 control-label">Tags:</label>
+      <div class="col-sm-8">
+      	<input type="text" class="form-control" id="qo-tags" ng-model="c.data.qo.tags" />  
+      </div>
+    </div>
+    <button ng-click="c.query()" class="btn btn-primary">Query</button> 
+  </form>
+  <!-- QUERY RESULTS -->
+  <div ng-if="c.mode >= c.modes.QUERY_RESULTS">
+    <h3>Results <a href="#"><small><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></small></a></h3>
+    <table st-table="c.data.docs" class="table table-striped">
+      <thead>
+      <tr>
+        <th st-sort="getters.type">Type</th>
+        <th st-sort="type.scope">Scope</th>
+      </tr>
+      <tr>
+        <th colspan="3"><input st-search placeholder="global search" class="input-sm form-control" type="search"/></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="doc in c.data.docs">
+        <td>
+          	<a ng-click="c.viewDoc(doc)">{{doc.type.name}}</a>
+          	<a href="{{doc.type.table}}.do?sys_id={{doc.type.id}}" target="_blank"><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></a>
+        </td>
+        <td>{{doc.type.scope}}</td>
+      </tr>
+      </tbody>
+    </table> 
+  </div>
+  <!-- VIEW DOC -->
+  <div ng-if="c.mode == c.modes.VIEW_DOC">
+    <div class="doc container">
+      <div class="row">
+        <div class="col-sm-10" style="vertical-align: top;">
+          <h3 style="margin-top: 0px;">
+            {{c.data.doc.type.name}}
+            <a href="{{c.data.doc.type.table}}.do?sys_id={{c.data.doc.type.id}}" target="_blank"><small><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></small></a>
+          </h3>
+        </div>
+        <div class="col-sm-2" style="text-align: right;">
+          <a ng-click="c.editDoc()">
+            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Edit
+          </a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <p>
+            Scope: {{c.data.doc.type.scope}}
+          </p>
+          <p>
+            Created by {{c.data.doc.type.createdBy}} on {{c.data.doc.type.createdOn}},
+            Updated by {{c.data.doc.type.updatedBy}} on {{c.data.doc.type.updatedOn}}
+          </p>
+        </div>  
+      </div>
+      <div class="row">
+        <div class="col-sm-2">
+          <span>Wiki</span>
+        </div>        
+        <div class="col-sm-10">
+          <div marked="c.data.doc.wiki" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-2">
+          <span>Tags</span>
+        </div>        
+        <div class="col-sm-10">
+          <tags-input ng-model="c.data.doc.tags" disabled="true"></tags-input>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- EDIT DOC -->
+ 	<div ng-if="c.mode == c.modes.EDIT_DOC">
+    <form name="form">
+      <h3>
+        {{c.data.doc.type.name}}
+      </h3>
+      <div class="form-group">
+        <label for="wiki">Wiki</label>
+        <textarea name="wiki" class="content-box"
+                  ng-model="c.data.doc.wiki"
+                  data-provide="markdown"
+                  markdown-editor="{'iconlibrary': 'fa', addExtraButtons: true, resize: 'vertical'}"
+                  on-fullscreen="onFullScreenCallback()"
+                  on-fullscreen-exit="onFullScreenExitCallback()"
+                  rows="10" >
+        </textarea>
+      </div>
+      <div class="form-group">
+        <label for="tags">Tags</label>
+        <tags-input name="tags" ng-model="c.data.doc.tags"></tags-input>
+      </div>
+      <a ng-click="c.save()" class="btn btn-primary">
+        <span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span> Save
+      </a>
+      <a ng-click="c.cancel()" class="btn btn-primary">
+        <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span> Cancel
+      </a>
+    </form>
+  </div>
+</div>
+]]></template>
+    </sp_widget>
+</record_update>

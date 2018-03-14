@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element label="Widget Docs" max_length="40" name="x_ucdhs_stuff_widget_docs" type="collection">
+        <element label="Tags" max_length="4000" name="tags" type="glide_list"/>
+        <element label="Type" mandatory="true" max_length="32" name="type" reference="sp_widget" type="reference"/>
+        <element label="Wiki" max_length="32768" name="wiki" type="string"/>
+        <index name="index">
+            <element name="type"/>
+        </index>
+    </element>
+</database>

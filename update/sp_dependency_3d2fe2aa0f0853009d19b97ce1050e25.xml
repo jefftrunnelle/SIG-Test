@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sp_dependency">
+    <sp_dependency action="INSERT_OR_UPDATE">
+        <module/>
+        <name>ng-markdown-editor</name>
+        <page_load>true</page_load>
+        <sp_portals/>
+        <sys_class_name>sp_dependency</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-02-06 05:39:26</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>3d2fe2aa0f0853009d19b97ce1050e25</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>ng-markdown-editor</sys_name>
+        <sys_package display_value="STUFF" source="x_ucdhs_stuff">a24766420f8413009d19b97ce1050ec4</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="STUFF">a24766420f8413009d19b97ce1050ec4</sys_scope>
+        <sys_update_name>sp_dependency_3d2fe2aa0f0853009d19b97ce1050e25</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-02-06 06:29:56</sys_updated_on>
+    </sp_dependency>
+</record_update>

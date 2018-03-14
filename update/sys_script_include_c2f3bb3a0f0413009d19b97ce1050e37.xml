@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_ucdhs_stuff.gr-query.js</api_name>
+        <client_callable>false</client_callable>
+        <description/>
+        <name>gr-query.js</name>
+        <script><![CDATA[var Query = (function () {
+
+  var find = function (table, options) {
+    // build query
+    var gr = new GlideRecord(table);
+    if (options.query) {
+      gr.addEncodedQuery(options.query);  
+    }
+    if (options.params) {
+      options.params.forEach(function (param) {
+        gr.addQuery(param.key, param.value, param.operator || "=");
+      });
+    }
+    if (options.orderBy) {
+      gr.orderBy(options.orderBy);
+    }
+    if (options.limit) {
+      gr.setLimit(options.limit);
+    }
+    // execute query
+    gr.query();
+    // generate results
+    var results = [];
+    while (gr.next()) {
+      if (options.mapper) {
+        results.push(options.mapper(gr));
+      } else {
+        results.push(gr);
+      }
+    }
+    return results;
+  };
+
+  // TODO: options and options.mapper coming up truthy 
+  var findOne = function (table, id, options) {
+    var gr = new GlideRecord(table);
+	gr.get(id);
+    //return (options.mapper) ? options.mapper(gr) : gr;
+	return gr;
+  };
+
+  return {
+    findAll: function (table, options) {
+      if (options.query || options.params) {
+        throw "Query::findAll does not accept query or params options";
+      }
+      return find(table, options);
+    },
+
+    findOne: function (table, id, options) {
+      return findOne(table, id, options);
+    },
+
+    findByQuery: function (table, query, options) {
+      if (options.params) {
+        throw "Query::findByQuery does not accept params option";
+      }
+      options["query"] = query;
+      return find(table, options);
+    },
+
+    findByParams: function (table, params, options) {
+      if (options.query) {
+        throw "Query::findByParams does not accept query option";
+      }
+      options["params"] = params;
+      return find(table, options);
+    }
+  };
+}());]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-02-07 05:16:58</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>c2f3bb3a0f0413009d19b97ce1050e37</sys_id>
+        <sys_mod_count>17</sys_mod_count>
+        <sys_name>gr-query.js</sys_name>
+        <sys_package display_value="STUFF" source="x_ucdhs_stuff">a24766420f8413009d19b97ce1050ec4</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="STUFF">a24766420f8413009d19b97ce1050ec4</sys_scope>
+        <sys_update_name>sys_script_include_c2f3bb3a0f0413009d19b97ce1050e37</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-02-14 19:08:16</sys_updated_on>
+    </sys_script_include>
+</record_update>

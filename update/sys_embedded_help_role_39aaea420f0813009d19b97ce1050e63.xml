@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_embedded_help_role">
+    <sys_embedded_help_role action="INSERT_OR_UPDATE">
+        <order>1000</order>
+        <role display_value="x_ucdhs_stuff.widget_docs_user" name="x_ucdhs_stuff.widget_docs_user">75aaea420f0813009d19b97ce1050e61</role>
+        <sys_class_name>sys_embedded_help_role</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-02-04 15:58:26</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>39aaea420f0813009d19b97ce1050e63</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>75aaea420f0813009d19b97ce1050e61</sys_name>
+        <sys_package display_value="STUFF" source="x_ucdhs_stuff">a24766420f8413009d19b97ce1050ec4</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="STUFF">a24766420f8413009d19b97ce1050ec4</sys_scope>
+        <sys_update_name>sys_embedded_help_role_39aaea420f0813009d19b97ce1050e63</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-02-04 15:58:26</sys_updated_on>
+    </sys_embedded_help_role>
+</record_update>

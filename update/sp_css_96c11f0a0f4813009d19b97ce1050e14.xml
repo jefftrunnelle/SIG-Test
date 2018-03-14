@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sp_css">
+    <sp_css action="INSERT_OR_UPDATE">
+        <css>tags-input {&#13;
+  box-shadow: none;&#13;
+  border: none;&#13;
+  padding: 0;&#13;
+  min-height: 34px;&#13;
+}&#13;
+tags-input .host {&#13;
+  margin: 0;&#13;
+}&#13;
+tags-input .tags {&#13;
+  -moz-appearance: none;&#13;
+  -webkit-appearance: none;&#13;
+  border: 1px solid #ccc;&#13;
+  border-radius: 4px;&#13;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);&#13;
+  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);&#13;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);&#13;
+  -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;&#13;
+  -moz-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;&#13;
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;&#13;
+}&#13;
+tags-input .tags .tag-item {&#13;
+  color: #fff;&#13;
+  background: #428bca;&#13;
+  border: 1px solid #357ebd;&#13;
+  border-radius: 4px;&#13;
+}&#13;
+tags-input .tags .tag-item.selected {&#13;
+  color: #fff;&#13;
+  background: #d9534f;&#13;
+  border: 1px solid #d43f3a;&#13;
+}&#13;
+tags-input .tags .tag-item .remove-button:hover {&#13;
+  text-decoration: none;&#13;
+}&#13;
+tags-input .tags.focused {&#13;
+  border: 1px solid #66afe9;&#13;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);&#13;
+  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);&#13;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);&#13;
+}&#13;
+tags-input .autocomplete {&#13;
+  border-radius: 4px;&#13;
+}&#13;
+tags-input .autocomplete .suggestion-item.selected {&#13;
+  color: #262626;&#13;
+  background-color: #f5f5f5;&#13;
+}&#13;
+tags-input .autocomplete .suggestion-item.selected em {&#13;
+  color: #262626;&#13;
+  background-color: #f5f5f5;&#13;
+}&#13;
+tags-input .autocomplete .suggestion-item em {&#13;
+  color: #000;&#13;
+  background-color: #fff;&#13;
+}&#13;
+tags-input.ng-invalid .tags {&#13;
+  border-color: #843534;&#13;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #ce8483;&#13;
+  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #ce8483;&#13;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #ce8483;&#13;
+}&#13;
+tags-input[disabled] .tags {&#13;
+  background-color: #eee;&#13;
+}&#13;
+tags-input[disabled] .tags .tag-item {&#13;
+  background: #337ab7;&#13;
+  opacity: 0.65;&#13;
+}&#13;
+tags-input[disabled] .tags .input {&#13;
+  background-color: #eee;&#13;
+}&#13;
+&#13;
+.input-group tags-input {&#13;
+  padding: 0;&#13;
+  display: table-cell;&#13;
+}&#13;
+.input-group tags-input:not(:first-child) .tags {&#13;
+  border-top-left-radius: 0;&#13;
+  border-bottom-left-radius: 0;&#13;
+}&#13;
+.input-group tags-input:not(:last-child) .tags {&#13;
+  border-top-right-radius: 0;&#13;
+  border-bottom-right-radius: 0;&#13;
+}&#13;
+&#13;
+.input-group-lg tags-input:first-child .tags {&#13;
+  border-top-left-radius: 6px;&#13;
+  border-bottom-left-radius: 6px;&#13;
+}&#13;
+.input-group-lg tags-input:last-child .tags {&#13;
+  border-top-right-radius: 6px;&#13;
+  border-bottom-right-radius: 6px;&#13;
+}&#13;
+&#13;
+.input-group-sm tags-input:first-child .tags {&#13;
+  border-top-left-radius: 3px;&#13;
+  border-bottom-left-radius: 3px;&#13;
+}&#13;
+.input-group-sm tags-input:last-child .tags {&#13;
+  border-top-right-radius: 3px;&#13;
+  border-bottom-right-radius: 3px;&#13;
+}&#13;
+&#13;
+tags-input.ti-input-lg, .input-group-lg tags-input {&#13;
+  min-height: 46px;&#13;
+}&#13;
+tags-input.ti-input-lg .tags, .input-group-lg tags-input .tags {&#13;
+  border-radius: 6px;&#13;
+}&#13;
+tags-input.ti-input-lg .tags .tag-item, .input-group-lg tags-input .tags .tag-item {&#13;
+  height: 38px;&#13;
+  line-height: 37px;&#13;
+  font-size: 18px;&#13;
+  border-radius: 6px;&#13;
+}&#13;
+tags-input.ti-input-lg .tags .tag-item .remove-button, .input-group-lg tags-input .tags .tag-item .remove-button {&#13;
+  font-size: 20px;&#13;
+}&#13;
+tags-input.ti-input-lg .tags .input, .input-group-lg tags-input .tags .input {&#13;
+  height: 38px;&#13;
+  font-size: 18px;&#13;
+}&#13;
+tags-input.ti-input-sm, .input-group-sm tags-input {&#13;
+  min-height: 30px;&#13;
+}&#13;
+tags-input.ti-input-sm .tags, .input-group-sm tags-input .tags {&#13;
+  border-radius: 3px;&#13;
+}&#13;
+tags-input.ti-input-sm .tags .tag-item, .input-group-sm tags-input .tags .tag-item {&#13;
+  height: 22px;&#13;
+  line-height: 21px;&#13;
+  font-size: 12px;&#13;
+  border-radius: 3px;&#13;
+}&#13;
+tags-input.ti-input-sm .tags .tag-item .remove-button, .input-group-sm tags-input .tags .tag-item .remove-button {&#13;
+  font-size: 16px;&#13;
+}&#13;
+tags-input.ti-input-sm .tags .input, .input-group-sm tags-input .tags .input {&#13;
+  height: 22px;&#13;
+  font-size: 12px;&#13;
+}&#13;
+&#13;
+.has-feedback tags-input .tags {&#13;
+  padding-right: 30px;&#13;
+}&#13;
+&#13;
+.has-success tags-input .tags {&#13;
+  border-color: #3c763d;&#13;
+}&#13;
+.has-success tags-input .tags.focused {&#13;
+  border-color: #2b542c;&#13;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #67b168;&#13;
+  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #67b168;&#13;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #67b168;&#13;
+}&#13;
+&#13;
+.has-error tags-input .tags {&#13;
+  border-color: #a94442;&#13;
+}&#13;
+.has-error tags-input .tags.focused {&#13;
+  border-color: #843534;&#13;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #ce8483;&#13;
+  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #ce8483;&#13;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #ce8483;&#13;
+}&#13;
+&#13;
+.has-warning tags-input .tags {&#13;
+  border-color: #8a6d3b;&#13;
+}&#13;
+.has-warning tags-input .tags.focused {&#13;
+  border-color: #66512c;&#13;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #c0a16b;&#13;
+  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #c0a16b;&#13;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #c0a16b;&#13;
+}&#13;
+&#13;
+/*# sourceMappingURL=ng-tags-input.bootstrap.css.map */&#13;
+</css>
+        <name>ng-tags-input.bootstrap.css</name>
+        <sys_class_name>sp_css</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-02-04 18:50:26</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>96c11f0a0f4813009d19b97ce1050e14</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>ng-tags-input.bootstrap.css</sys_name>
+        <sys_package display_value="STUFF" source="x_ucdhs_stuff">a24766420f8413009d19b97ce1050ec4</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="STUFF">a24766420f8413009d19b97ce1050ec4</sys_scope>
+        <sys_update_name>sp_css_96c11f0a0f4813009d19b97ce1050e14</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-02-06 06:15:38</sys_updated_on>
+    </sp_css>
+</record_update>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="m2m_sp_dependency_js_include">
+    <m2m_sp_dependency_js_include action="INSERT_OR_UPDATE">
+        <order>100</order>
+        <sp_dependency display_value="smart-table">37d746ef0f0853009d19b97ce1050efb</sp_dependency>
+        <sp_js_include display_value="smart-table.js">7b97c2ef0f0853009d19b97ce1050e45</sp_js_include>
+        <sys_class_name>m2m_sp_dependency_js_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-02-09 05:18:19</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>d608c6ef0f0853009d19b97ce1050edf</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>smart-table.smart-table.js</sys_name>
+        <sys_package display_value="STUFF" source="x_ucdhs_stuff">a24766420f8413009d19b97ce1050ec4</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="STUFF">a24766420f8413009d19b97ce1050ec4</sys_scope>
+        <sys_update_name>m2m_sp_dependency_js_include_d608c6ef0f0853009d19b97ce1050edf</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-02-09 05:18:19</sys_updated_on>
+    </m2m_sp_dependency_js_include>
+</record_update>
